@@ -1,16 +1,14 @@
 import React from 'react'
-import FeedBackBoard from '../components/FeedBackBoard'
-import FilterCategory from '../components/FilterList'
-import Roadmap from '../components/Roadmap'
+import ProductRequests from '../components/ProductRequests'
+
 
 const HomeScreen = () => {
   return (
-    <div>
-      <FeedBackBoard />
-      <FilterCategory />
-      <Roadmap />
-    </div>
+    <>
+       <ProductRequests />  
+    </>
   )
 }
 
 export default HomeScreen
+
