@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components';
 
 const RoadmapType = ({type, number}) => {
-  console.log(type, number);
   let isTypeBackground = () => {
     if (type === 'Planned' ) {
       return '#F49F85'
