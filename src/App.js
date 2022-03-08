@@ -1,12 +1,23 @@
 import './App.css';
+import Layout from './components/Layout';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 import HomeScreen from './screens/HomeScreen';
-
+import FeedBackDetail from './screens/FeedBackDetail';
 
 function App() {
   return (
-    <div className="App">
-     <HomeScreen />
-    </div>
+    <BrowserRouter>
+    <Layout>
+    <Routes>
+      <Route path="/" element={<HomeScreen />} />
+      <Route path="/feedback-detail" element={<FeedBackDetail />} />
+    </Routes>
+    </Layout>
+  </BrowserRouter>
   );
 }
 
