@@ -3,20 +3,41 @@ import styled from 'styled-components'
 import AddComments from '../components/AddComments'
 import Comments from '../components/Comments'
 import ProductRequest from '../components/ProductRequest'
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useEffect } from 'react'
+import { useDataContext } from '../context/data_context'
+import Comment from '../components/Comment'
 
 
 const FeedBackDetail = () => {
+  const {id} = useParams()
+  const {productRequests} = useDataContext()
+
+  const singleProduct = productRequests[id]
+  console.log(singleProduct?.comments);
+  
+
   return (
     <Container>
-      
       <Wrapper>
         <BtnContainer>
         <GoBack to='/' > <img src="images/icon-arrow-left.svg" alt="Go back"/> Go back </GoBack>
         <EditFeedback to='/edit-feedback'> Edit Feedback </EditFeedback>
         </BtnContainer>
-        <ProductRequest />
-          <Comments />
+        <ProductRequest {...singleProduct} />
+        <ContainerComments>
+          { singleProduct?.comments && (
+            <> 
+            <span>4 comments</span>
+            {
+              singleProduct?.comments.map(comment => (
+                <Comment key={comment.id} {...comment} />
+              ) )
+            }
+            </>
+            )}
+      
+    </ContainerComments>
           <AddComments />
       </Wrapper>
     </Container>
@@ -63,4 +84,18 @@ const EditFeedback = styled(Link)`
  padding: 12px 24px;
  color: #FFFFFF;
 `;
+
+const ContainerComments = styled.div`
+  background: #FFFFFF;
+  padding: 24px 34px;
+  border-radius: 10px;
+  span {
+    font-size: 18px;
+    color: #3A4374;
+    font-weight: 700;
+    display: inline-block;
+    padding-bottom: 28px;
+  }
+`;
+
 

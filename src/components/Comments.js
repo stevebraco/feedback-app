@@ -5,19 +5,14 @@ import Reply from './Reply'
 
 const Comments = () => {
   return (
-    <Container>
-      <span>4 comments</span>
-      <Comment />
-      <Comment />
-      <Reply />
-      <Reply />
-
-    </Container>
+    <ContainerComments>
+      <span>4 commentsf</span>
+    </ContainerComments>
   )
 }
 
 export default Comments
-const Container = styled.div`
+const ContainerComments = styled.div`
   background: #FFFFFF;
   padding: 24px 34px;
   border-radius: 10px;

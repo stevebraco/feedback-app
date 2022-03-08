@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { useDataContext } from '../context/data_context'
 import FeedBackDetail from '../screens/FeedBackDetail'
 
-const ProductRequest = ({title, description, upvotes, category, comments}) => {
+const ProductRequest = ({id,title, description, upvotes, category, comments}) => {
   const commentsNumber = comments  ?  comments?.length : 0
   return (
     <>
@@ -12,7 +12,7 @@ const ProductRequest = ({title, description, upvotes, category, comments}) => {
       <Wrapper>
       <UpVotes> <img src="images/icon-arrow-up.svg" alt="icon up" /> <span>{upvotes}</span> </UpVotes>
       <div >
-    <Link to='/feedback-detail' >
+    <Link to={`/feedback-detail${id - 1}`} >
       <Title>{title}</Title>
     </Link>
       <Description>{description}</Description>
@@ -95,6 +95,7 @@ span {
   font-weight: 600;
   color: #4661E6;
   padding: 5px 16px;
+  text-transform: capitalize;
 }
 `;
 const CommentsNumber = styled.div`

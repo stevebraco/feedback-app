@@ -1,16 +1,21 @@
 import React from 'react'
 import styled from 'styled-components';
+import { useDataContext } from '../context/data_context';
 
 const FilterList = () => {
+  const {productRequests} = useDataContext()
+  console.log(productRequests);
+  const categories = ['all', ...new Set(productRequests.map(product => product.category))]
+  console.log(categories);
   return (
     <Container>
       <FilterLists>
-        <Filter>All</Filter>
-        <Filter>UI</Filter>
-        <Filter>UX</Filter>
-        <Filter>Enhancement</Filter>
-        <Filter>Bug</Filter>
-        <Filter>Feature</Filter>
+       {
+        categories.map(category => (
+          <button> {category}</button>
+        ))
+        }
+       
       </FilterLists>
     </Container>
   )
@@ -45,5 +50,6 @@ const Filter = styled.li`
   color: rgba(70, 97, 230, 1);
   font-weight: 600;
   font-size: 13px;
+  text-transform: capitalize;
 
 `;

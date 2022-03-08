@@ -5,6 +5,11 @@ const initialState = {
   productRequestsLoading: false,
   productRequestsError: false,
   productRequests: [],
+
+  singleProductLoading: false,
+  singleProductError: false,
+  singleProduct: {},
+
 };
 
 const DataContext = createContext()
@@ -12,9 +17,6 @@ const DataContext = createContext()
 export const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  
-
-  
   const fetchProductRequests = async () => {
     dispatch({ type: 'GET_PRODUCT_REQUESTS_LOADING' })
     try {
@@ -24,17 +26,18 @@ export const DataProvider = ({ children }) => {
       console.log(data);
     } catch (error) {
       dispatch({ type: 'GET_PRODUCT_REQUESTS_ERROR' })
-
     }
-    
   }
+
+  
+
   useEffect(() => {
     fetchProductRequests()
   },[])
 
 
   return (
-    <DataContext.Provider value={{...state}}>
+    <DataContext.Provider value={{...state, fetchProductRequests}}>
       {children}
     </DataContext.Provider>
   )

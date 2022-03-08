@@ -1,20 +1,23 @@
 import React from 'react'
 import styled from 'styled-components';
 
-const Reply = () => {
+const Reply = ({content, user: {name, username}, replyingTo}) => {
   return (
     <Wrapper>
       <Avatar />
         <InfoContainer>
         <Flex>
           <div>
-      <Name>Anne Valentine </Name>
-      <Username>@annev1990</Username>
+      <Name>{name}</Name>
+      <Username>@{username}</Username>
           </div>
       <BtnReply>Reply</BtnReply>
         </Flex>
       <Content>
-      @hummingbird1  While waiting for dark mode, there are browser extensions that will also do the job. Search for "dark theme” followed by your browser. There might be a need to turn off the extension for sites with naturally black backgrounds though.
+        <ReplyTo>
+          @{replyingTo} {" "}
+        </ReplyTo> 
+        {content}
       </Content>
         </InfoContainer>
       </Wrapper>
@@ -55,8 +58,12 @@ const Content = styled.p`
   max-width: 594px;
   font-size: 15px;
   color: #647196;
-
 `;
+
+const ReplyTo = styled.strong`
+  color: #AD1FEA;
+`;
+
 const Name = styled.h2`
   font-weight: 700;
   font-size: 14px;

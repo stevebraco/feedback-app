@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components';
 import Reply from './Reply';
 
-const Comment = () => {
+const Comment = ({id, content, user: {name, username}, replies}) => {
+  console.log(replies);
   return (
     <>
     <Wrapper>
@@ -10,16 +11,21 @@ const Comment = () => {
         <InfoContainer>
         <Flex>
           <div>
-      <Name>Elijah Moss</Name>
-      <Username>@hexagon.bestagon</Username>
+      <Name>{name}</Name>
+      <Username>@{username}</Username>
           </div>
       <BtnReply>Reply</BtnReply>
         </Flex>
       <Content>
-      Also, please allow styles to be applied based on system preferences. I would love to be able to browse Frontend Mentor in the evening after my device’s dark mode turns on without the bright background it currently has.
+      {content}
       </Content>
         </InfoContainer>
       </Wrapper>
+
+      {replies > 0 && replies?.map((reply, index) => (
+        <Reply key={index} {...reply} />
+      ))}
+      
       </>
   )
 }

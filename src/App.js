@@ -14,7 +14,7 @@ function App() {
     <Layout>
     <Routes>
       <Route path="/" element={<HomeScreen />} />
-      <Route path="/feedback-detail" element={<FeedBackDetail />} />
+      <Route  path="/feedback-detail:id" element={<FeedBackDetail />} />
     </Routes>
     </Layout>
   </BrowserRouter>
