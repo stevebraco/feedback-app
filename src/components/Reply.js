@@ -1,38 +1,35 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 
-const Reply = ({content, user: {name, username}, replyingTo}) => {
+const Reply = ({ content, user: { name, username }, replyingTo }) => {
   return (
     <Wrapper>
       <Avatar />
-        <InfoContainer>
+      <InfoContainer>
         <Flex>
           <div>
-      <Name>{name}</Name>
-      <Username>@{username}</Username>
+            <Name>{name}</Name>
+            <Username>@{username}</Username>
           </div>
-      <BtnReply>Reply</BtnReply>
+          <BtnReply>Reply</BtnReply>
         </Flex>
-      <Content>
-        <ReplyTo>
-          @{replyingTo} {" "}
-        </ReplyTo> 
-        {content}
-      </Content>
-        </InfoContainer>
-      </Wrapper>
-  )
-}
+        <Content>
+          <ReplyTo>@{replyingTo} </ReplyTo>
+          {content}
+        </Content>
+      </InfoContainer>
+    </Wrapper>
+  );
+};
 
-export default Reply
-
+export default Reply;
 
 const Avatar = styled.div`
   max-width: 40px;
   width: 100%;
   height: 40px;
   border-radius: 50%;
-  background: black;  
+  background: black;
   display: block;
 `;
 
@@ -61,13 +58,13 @@ const Content = styled.p`
 `;
 
 const ReplyTo = styled.strong`
-  color: #AD1FEA;
+  color: #ad1fea;
 `;
 
 const Name = styled.h2`
   font-weight: 700;
   font-size: 14px;
-  color: #3A4374;
+  color: #3a4374;
 `;
 const Username = styled.div`
   font-size: 14px;
@@ -79,5 +76,5 @@ const BtnReply = styled.button`
   background: transparent;
   font-weight: 600;
   font-size: 13px;
-  color: #4661E6;
+  color: #4661e6;
 `;

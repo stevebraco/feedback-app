@@ -1,14 +1,12 @@
-import React from 'react'
-import ProductRequests from '../components/ProductRequests'
-
+import React from 'react';
+import ProductRequests from '../components/ProductRequests';
 
 const HomeScreen = () => {
   return (
     <>
-       <ProductRequests />  
+      <ProductRequests />
     </>
-  )
-}
+  );
+};
 
-export default HomeScreen
-
+export default HomeScreen;

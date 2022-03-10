@@ -1,29 +1,27 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import FeedBackBoard from './FeedBackBoard';
 import FilterList from './FilterList';
 import Roadmap from './Roadmap';
 import SuggestionsFeed from './SuggestionsFeed';
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <Container>
       <Aside>
-      <FeedBackBoard />
-      <FilterList />
-      <Roadmap />
+        <FeedBackBoard />
+        <FilterList />
+        <Roadmap />
       </Aside>
-      <div>
-    <SuggestionsFeed />
       <Main>
-        {children}
-        </Main>
-        </div>
+        <SuggestionsFeed />
+        <Main>{children}</Main>
+      </Main>
     </Container>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
 
 const Container = styled.div`
   display: flex;
@@ -39,6 +37,7 @@ const Aside = styled.div`
 `;
 
 const Main = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
 `;

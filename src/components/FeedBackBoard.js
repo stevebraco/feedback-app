@@ -1,19 +1,18 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import React from 'react'
+import React from 'react';
 
 const FeedBackBoard = () => {
   return (
     <Container>
-      <Img src='images/background-header.png' alt='background' />
+      <Img src="images/background-header.png" alt="background" />
       <Title>Frontend Mentor</Title>
       <SubTitle>Feedback Board</SubTitle>
     </Container>
-  )
-}
+  );
+};
 
-export default FeedBackBoard
-
+export default FeedBackBoard;
 
 const Container = styled.div`
   position: relative;
@@ -23,7 +22,7 @@ const Container = styled.div`
   padding-left: 24px;
   padding-top: 62px;
   overflow: hidden;
-  color: #FFFFFF;
+  color: #ffffff;
 `;
 
 const Img = styled.img`
@@ -34,13 +33,12 @@ const Img = styled.img`
 
 const Title = styled.h1`
   font-size: 20px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: 700;
-
 `;
 
 const SubTitle = styled.span`
   font-weight: 500;
   font-size: 15px;
-  color: #DADCFC;
+  color: #dadcfc;
 `;

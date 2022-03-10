@@ -4,3 +4,8 @@
 html {
   box-sizing: border-box;
 }
+
+.active {
+  background-color: #4661E6;
+  color: #FFFFFF;
+}

@@ -1,26 +1,27 @@
-import React from 'react'
-import styled from 'styled-components'
-import ProductRequest from '../components/ProductRequest'
-import { useDataContext } from '../context/data_context'
+import React from 'react';
+import styled from 'styled-components';
+import ProductRequest from '../components/ProductRequest';
+import { useDataContext } from '../context/data_context';
+import { useFilterContext } from '../context/filter_context';
 
 const ProductRequests = () => {
-  const {productRequestsLoading, productRequests, productRequestsError} = useDataContext()
-  if(productRequestsLoading) <p>Loading...</p>
-  if(productRequestsError) <p>Error...</p>
+  const { filteredProducts } = useFilterContext();
+  const { productRequestsLoading, productRequestsError } = useDataContext();
+  console.log(filteredProducts);
+  if (productRequestsLoading) <p>Loading...</p>;
+  if (productRequestsError) <p>Error...</p>;
   return (
     <Container>
-      {productRequests?.map(productRequest => (
+      {filteredProducts?.map((productRequest) => (
         <ProductRequest key={productRequest.id} {...productRequest} />
       ))}
-      
     </Container>
-  )
-}
+  );
+};
 
-export default ProductRequests
+export default ProductRequests;
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
 `;
-

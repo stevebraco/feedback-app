@@ -1,55 +1,70 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import { useDataContext } from '../context/data_context';
+import { useFilterContext } from '../context/filter_context';
 
 const FilterList = () => {
-  const {productRequests} = useDataContext()
-  console.log(productRequests);
-  const categories = ['all', ...new Set(productRequests.map(product => product.category))]
-  console.log(categories);
+  const {
+    allProducts,
+    updateFilters,
+    filters: { category },
+  } = useFilterContext();
+  const getUniqueValues = (data, type) => {
+    let unique = data.map((item) => item[type]);
+
+    if (type === 'colors') {
+      unique = unique.flat();
+    }
+    return ['all', ...new Set(unique)];
+  };
+  const categories = getUniqueValues(allProducts, 'category');
   return (
     <Container>
-      <FilterLists>
-       {
-        categories.map(category => (
-          <button> {category}</button>
-        ))
-        }
-       
-      </FilterLists>
+      <form onSubmit={(e) => e.preventDefault()}>
+        <FilterLists>
+          {categories.map((c) => (
+            <Filter
+              className={`${category === c.toLowerCase() ? 'active' : ''}`}
+              name="category"
+              onClick={updateFilters}
+            >
+              {c}
+            </Filter>
+          ))}
+        </FilterLists>
+      </form>
     </Container>
-  )
-}
+  );
+};
 
-export default FilterList
+export default FilterList;
 
 const Container = styled.div`
   max-width: 255px;
   height: 166px;
   border-radius: 15px;
   overflow: hidden;
-  background: #FFFFFF;
+  background: #ffffff;
 `;
 
-const FilterLists = styled.ul`
+const FilterLists = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 6%;
   height: 100%;
-  padding-left: 24px;
-  padding-top: 24px;
+  padding: 24px;
 `;
-const Filter = styled.li`
-  display: flex;
-  justify-content: center;
+const Filter = styled.button`
+  display: inline-block;
+  cursor: pointer;
   padding: 0 16px;
-  align-items: center;
-  background: #F2F4FF;
+  background: #f2f4ff;
   border-radius: 10px;
   height: 30px;
   color: rgba(70, 97, 230, 1);
   font-weight: 600;
   font-size: 13px;
   text-transform: capitalize;
-
+  border: none;
+  margin-bottom: 20px;
 `;

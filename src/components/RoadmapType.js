@@ -1,36 +1,33 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 
-const RoadmapType = ({type, number}) => {
+const RoadmapType = ({ type, number }) => {
   let isTypeBackground = () => {
-    if (type === 'Planned' ) {
-      return '#F49F85'
+    if (type === 'Planned') {
+      return '#F49F85';
     } else if (type === 'In-Progress') {
-      return '#AD1FEA'
+      return '#AD1FEA';
     } else {
-      return '#62BCFA'
+      return '#62BCFA';
     }
-  } 
+  };
   return (
     <Container>
       <div>
-      <Circle style={{background : isTypeBackground()}} />
-      <Type> {type} </Type>
+        <Circle style={{ background: isTypeBackground() }} />
+        <Type> {type} </Type>
       </div>
-      {
-        number && <Number> {number} </Number>
-      }
-      
+      {number && <Number> {number} </Number>}
     </Container>
-  )
-}
+  );
+};
 
-export default RoadmapType
+export default RoadmapType;
 
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-`
+`;
 
 const Circle = styled.span`
   width: 8px;
@@ -41,13 +38,13 @@ const Circle = styled.span`
 `;
 
 const Type = styled.span`
-  font-size: 16px;  
-  color: #647196;  
+  font-size: 16px;
+  color: #647196;
   font-weight: 400;
 `;
 
 const Number = styled.span`
-  font-size: 16px;  
+  font-size: 16px;
   color: #647196;
   font-weight: 700;
 `;
