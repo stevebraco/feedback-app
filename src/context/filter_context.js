@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import reducer from '../reducer/filter_reducer';
 import { useDataContext } from './data_context';
-const { createContext, useContext, useReducer, useEffect } = require('react');
+import { createContext, useContext, useReducer, useEffect } from 'react';
 
 const initialState = {
   filteredProducts: [],
@@ -39,7 +40,7 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: 'UPDATE_FILTERS', payload: { name, value } });
   };
 
-  const updateSort = (value) => {
+  const updateSort = (value) => () => {
     dispatch({ type: 'UPDATE_SORT', payload: value });
   };
 
@@ -52,6 +53,7 @@ export const FilterProvider = ({ children }) => {
   };
 
   return (
+    // eslint-disable-next-line react/react-in-jsx-scope
     <FilterContext.Provider
       value={{
         ...state,

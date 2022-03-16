@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useFilterContext } from '../context/filter_context';
+import DropDown from './DropDown';
 
 const SuggestionsFeed = () => {
   const {
@@ -11,10 +12,9 @@ const SuggestionsFeed = () => {
     isOpenSortWrapper,
   } = useFilterContext();
   const { filteredProducts } = useFilterContext();
-  console.log(filteredProducts.length);
   let sortList = [
     'Most Upvotes',
-    'Least UpVotes',
+    'Least Upvotes',
     'Most Comments',
     'Least Comments',
   ];
@@ -40,18 +40,12 @@ const SuggestionsFeed = () => {
       {isOpenSortWrapper && (
         <ContainerSort>
           {sortList.map((t, index) => (
-            <BtnSort
-              onClick={() => {
-                updateSort(t);
-              }}
+            <DropDown
               key={index}
-            >
-              {' '}
-              {t}{' '}
-              {sort === t && (
-                <IconCheck src="/images/icon-check.svg" alt="" srcset="" />
-              )}{' '}
-            </BtnSort>
+              list={t}
+              value={sort}
+              handleClick={updateSort(t)}
+            />
           ))}
         </ContainerSort>
       )}
@@ -62,7 +56,6 @@ const SuggestionsFeed = () => {
 export default SuggestionsFeed;
 
 const Container = styled.div`
-  width: 825px;
   height: 72px;
   background: #373f68;
   border-radius: 10px;

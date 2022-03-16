@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import PropTypes from 'prop-types'; // ES6
 import { useDataContext } from '../context/data_context';
-import FeedBackDetail from '../screens/FeedBackDetail';
+import UpVotes from './UpVotes';
 
 const ProductRequest = ({
   id,
@@ -11,30 +12,31 @@ const ProductRequest = ({
   upvotes,
   category,
   comments,
+  // eslint-disable-next-line react/prop-types
 }) => {
   const commentsNumber = comments ? comments?.length : 0;
+
+  const { handleUpVotes } = useDataContext();
   return (
     <>
       <Container>
         <Wrapper>
-          <UpVotes>
-            {' '}
-            <img src="images/icon-arrow-up.svg" alt="icon up" />
-            <span>{upvotes}</span>
-          </UpVotes>
-          <div>
-            <Link to={`/feedback-detail${id - 1}`}>
+          <UpVotes id={id} upvotes={upvotes} handleClick={handleUpVotes(id)} />
+          <Link to={`/feedback-detail${id - 1}`}>
+            <WrapperContent>
               <Title>{title}</Title>
-            </Link>
-            <Description>{description}</Description>
-            <Category>
-              <span>{category}</span>
-            </Category>
-          </div>
+              <Description>{description}</Description>
+              <Category>
+                <span>{category}</span>
+              </Category>
+            </WrapperContent>
+          </Link>
         </Wrapper>
         <CommentsNumber>
           <img src="images/icon-comments.svg" alt="comments" />
-          <span>{commentsNumber}</span>
+          <span style={{ color: commentsNumber === 0 && '#647196' }}>
+            {commentsNumber}
+          </span>
         </CommentsNumber>
       </Container>
     </>
@@ -42,6 +44,15 @@ const ProductRequest = ({
 };
 
 export default ProductRequest;
+
+ProductRequest.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  upvotes: PropTypes.number,
+  category: PropTypes.string,
+  comments: PropTypes.array,
+};
 
 const Container = styled.div`
   display: flex;
@@ -63,7 +74,9 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-const UpVotes = styled.div`
+const BtnUpVotes = styled.button`
+  cursor: pointer;
+  border: none;
   background: #f2f4fe;
   display: flex;
   flex-direction: column;
@@ -74,6 +87,7 @@ const UpVotes = styled.div`
   height: 53px;
   border-radius: 10px;
   gap: 8px;
+  transition: 0.5s;
 
   span {
     color: #3a4374;
@@ -81,7 +95,19 @@ const UpVotes = styled.div`
     font-size: 13px;
     padding: 0 9px;
   }
+
+  &:hover {
+    background: #cfd7ff;
+  }
 `;
+
+const WrapperContent = styled.div`
+  transition: 0.5s;
+  &:hover h3 {
+    color: #4661e6;
+  }
+`;
+
 const Title = styled.h3`
   font-weight: 700;
   font-size: 18px;

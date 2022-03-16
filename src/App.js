@@ -1,19 +1,28 @@
+/* eslint-disable react/react-in-jsx-scope */
 import './App.css';
 import Layout from './components/Layout';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomeScreen from './screens/HomeScreen';
 import FeedBackDetail from './screens/FeedBackDetail';
 import AddFeedBack from './screens/AddFeedBack';
+import EditFeedBack from './screens/EditFeedBack';
+import RoadmapFeedBack from './screens/RoadmapFeedBack';
 
 function App() {
   return (
+    // eslint-disable-next-line react/react-in-jsx-scope
     <BrowserRouter>
       <Layout>
         <Routes>
+          <Route path="/roadmap" element={<RoadmapFeedBack />} />
+          <Route path="/editFeedback:id" element={<EditFeedBack />} />
+          <Route
+            exact
+            path="/feedback-detail:id"
+            element={<FeedBackDetail />}
+          />
+          <Route path="/addFeedback" element={<AddFeedBack />} />
           <Route path="/" element={<HomeScreen />} />
-          <Route path="/feedback-detail:id" element={<FeedBackDetail />} />
-          <Route path="/addFeedback" element={<AddFeedBack />} />
-          <Route path="/addFeedback" element={<AddFeedBack />} />
         </Routes>
       </Layout>
     </BrowserRouter>

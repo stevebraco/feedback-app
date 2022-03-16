@@ -7,7 +7,6 @@ import { useFilterContext } from '../context/filter_context';
 const ProductRequests = () => {
   const { filteredProducts } = useFilterContext();
   const { productRequestsLoading, productRequestsError } = useDataContext();
-  console.log(filteredProducts);
   if (productRequestsLoading) <p>Loading...</p>;
   if (productRequestsError) <p>Error...</p>;
   return (

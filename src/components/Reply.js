@@ -1,24 +1,36 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
+import { useDataContext } from '../context/data_context';
 
-const Reply = ({ content, user: { name, username }, replyingTo }) => {
+// eslint-disable-next-line react/prop-types
+const Reply = ({ reply, id, index }) => {
+  const {
+    content,
+    user: { name, username },
+    replyingTo,
+  } = reply;
+
+  const { handleReplyBis } = useDataContext();
   return (
-    <Wrapper>
-      <Avatar />
-      <InfoContainer>
-        <Flex>
-          <div>
-            <Name>{name}</Name>
-            <Username>@{username}</Username>
-          </div>
-          <BtnReply>Reply</BtnReply>
-        </Flex>
-        <Content>
-          <ReplyTo>@{replyingTo} </ReplyTo>
-          {content}
-        </Content>
-      </InfoContainer>
-    </Wrapper>
+    <div>
+      <Wrapper>
+        <Avatar />
+        <InfoContainer>
+          <Flex>
+            <div>
+              <Name>{name}</Name>
+              <Username>@{username}</Username>
+            </div>
+            <BtnReply onClick={handleReplyBis(id, index)}>Reply</BtnReply>
+          </Flex>
+          <Content>
+            <ReplyTo>@{replyingTo} </ReplyTo>
+            {content}
+          </Content>
+        </InfoContainer>
+      </Wrapper>
+    </div>
   );
 };
 
@@ -45,6 +57,7 @@ const InfoContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 17px;
+  width: 100%;
 `;
 
 const Flex = styled.div`
@@ -71,6 +84,7 @@ const Username = styled.div`
   color: #647196;
 `;
 const BtnReply = styled.button`
+  cursor: pointer;
   display: inline-block;
   border: none;
   background: transparent;

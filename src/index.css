@@ -1,11 +1,13 @@
-@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
+@import url('https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css');
 
-
+#root {
+  padding: 0 10px;
+}
 html {
   box-sizing: border-box;
 }
 
 .active {
-  background-color: #4661E6;
-  color: #FFFFFF;
+  background-color: #4661e6;
+  color: #ffffff;
 }

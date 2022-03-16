@@ -19,7 +19,7 @@ const filter_reducer = (state, action) => {
   }
 
   if (action.type === 'FILTER_SORTS') {
-    const { allProducts, isOpenSortWrapper, filteredProducts } = state;
+    const { filteredProducts } = state;
     const { sort } = state.filters;
 
     // copy all data
@@ -29,7 +29,7 @@ const filter_reducer = (state, action) => {
       tempProducts = tempProducts.sort((a, b) => b.upvotes - a.upvotes);
     }
 
-    if (sort === 'Least UpVotes') {
+    if (sort === 'Least Upvotes') {
       tempProducts = tempProducts.sort((a, b) => a.upvotes - b.upvotes);
     }
 
@@ -66,7 +66,6 @@ const filter_reducer = (state, action) => {
       tempProducts = tempProducts.filter(
         (product) => product.category === category
       );
-      console.log(tempProducts);
     }
 
     return { ...state, filteredProducts: tempProducts };
@@ -75,6 +74,22 @@ const filter_reducer = (state, action) => {
   if (action.type === 'OPEN_SORT') {
     const { isOpenSortWrapper } = state;
     return { ...state, isOpenSortWrapper: !isOpenSortWrapper };
+  }
+
+  if (action.type === 'OPEN_STATUS') {
+    const { isOpenStatusWrapper } = state;
+    return { ...state, isOpenStatusWrapper: !isOpenStatusWrapper };
+  }
+
+  if (action.type === 'EDIT_FEEDBACK') {
+    const { productRequests, editCategory, editStatus } = state;
+    console.log(editCategory);
+    console.log(editStatus);
+    const { currentId } = action.payload;
+    console.log(currentId);
+    console.log(productRequests);
+
+    return { ...state };
   }
 
   throw new Error(`No Matching "${action.type}" - action type`);

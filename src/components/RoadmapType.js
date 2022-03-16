@@ -1,24 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// eslint-disable-next-line react/prop-types
 const RoadmapType = ({ type, number }) => {
   let isTypeBackground = () => {
-    if (type === 'Planned') {
+    if (type === 'planned') {
       return '#F49F85';
-    } else if (type === 'In-Progress') {
+    } else if (type === 'in-progress') {
       return '#AD1FEA';
     } else {
       return '#62BCFA';
     }
   };
   return (
-    <Container>
-      <div>
-        <Circle style={{ background: isTypeBackground() }} />
-        <Type> {type} </Type>
-      </div>
-      {number && <Number> {number} </Number>}
-    </Container>
+    <>
+      {type !== 'undefined' && (
+        <Container>
+          <div>
+            <Circle style={{ background: isTypeBackground() }} />
+            <Type> {type} </Type>
+          </div>
+          {number && <Number> {number} </Number>}
+        </Container>
+      )}
+    </>
   );
 };
 
@@ -41,6 +46,7 @@ const Type = styled.span`
   font-size: 16px;
   color: #647196;
   font-weight: 400;
+  text-transform: capitalize;
 `;
 
 const Number = styled.span`

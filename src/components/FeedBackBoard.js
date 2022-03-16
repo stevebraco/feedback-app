@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const FeedBackBoard = () => {
   return (
     <Container>
-      <Img src="images/background-header.png" alt="background" />
-      <Title>Frontend Mentor</Title>
-      <SubTitle>Feedback Board</SubTitle>
+      <Link to="/">
+        <Img src="images/background-header.png" alt="background" />
+        <Title>Frontend Mentor</Title>
+        <SubTitle>Feedback Board</SubTitle>
+      </Link>
     </Container>
   );
 };
@@ -23,12 +26,17 @@ const Container = styled.div`
   padding-top: 62px;
   overflow: hidden;
   color: #ffffff;
+  @media (max-width: 915px) {
+    width: 100%;
+    height: 180px;
+  }
 `;
 
 const Img = styled.img`
   position: absolute;
   inset: 0;
   z-index: -1;
+  height: 100%;
 `;
 
 const Title = styled.h1`

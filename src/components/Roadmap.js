@@ -1,33 +1,32 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDataContext } from '../context/data_context';
 import RoadmapType from './RoadmapType';
 const Roadmap = () => {
   const { productRequests } = useDataContext();
-  let number;
   let unique = [
-    ...new Set(
-      productRequests
-        .map((product) => {
-          console.log('STATUS', product.status);
-          return product.status;
-        })
-        .filter((c) => c !== 'suggestion')
-    ),
+    productRequests
+      .map((product) => {
+        return product.status;
+      })
+      .filter((c) => c !== 'suggestion'),
   ];
+  const counts = {};
+
+  unique[0].map(function (x) {
+    counts[x] = (counts[x] || 0) + 1;
+  });
 
   return (
     <Container>
       <WrapperInfo>
         <Title>Roadmap</Title>
-        <View>View</View> {/* Transform link  */}
+        <View to="/roadmap">View</View> {/* Transform link  */}
       </WrapperInfo>
-      {unique.map((product) => (
-        <RoadmapType type={product} />
+      {Object.entries(counts).map((t, index) => (
+        <RoadmapType key={index} type={t[0]} number={t[1]} />
       ))}
-      <RoadmapType type="Planned" number="2" />
-      <RoadmapType type="In-Progress" number="3" />
-      <RoadmapType type="Live" number="1" />
     </Container>
   );
 };
@@ -41,6 +40,10 @@ const Container = styled.div`
   padding: 19px 24px 0;
   overflow: hidden;
   background: #ffffff;
+  @media (max-width: 915px) {
+    width: 100%;
+    height: 180px;
+  }
 `;
 
 const WrapperInfo = styled.div`
@@ -55,7 +58,7 @@ const Title = styled.h3`
   color: #3a4374;
 `;
 
-const View = styled.h3`
+const View = styled(Link)`
   font-weight: 600;
   font-size: 13px;
   color: #4661e6;

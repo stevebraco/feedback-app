@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const FeedBackEmpty = () => {
@@ -10,7 +11,7 @@ const FeedBackEmpty = () => {
         Got a suggestion? Found a bug that needs to be squashed? We love hearing
         about new ideas to improve our app.
       </Para>
-      <Button>
+      <Button to="/addFeedback">
         <span>+ Add Feedback</span>
       </Button>
     </Container>
@@ -48,7 +49,7 @@ const Para = styled.p`
   padding-bottom: 60px;
 `;
 
-const Button = styled.button`
+const Button = styled(Link)`
   cursor: pointer;
   font-family: Jost;
   border: none;

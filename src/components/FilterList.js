@@ -11,20 +11,17 @@ const FilterList = () => {
   } = useFilterContext();
   const getUniqueValues = (data, type) => {
     let unique = data.map((item) => item[type]);
-
-    if (type === 'colors') {
-      unique = unique.flat();
-    }
-    return ['all', ...new Set(unique)];
+    return ['all', 'UI', 'UX', ...new Set(unique)];
   };
   const categories = getUniqueValues(allProducts, 'category');
   return (
     <Container>
       <form onSubmit={(e) => e.preventDefault()}>
         <FilterLists>
-          {categories.map((c) => (
+          {categories.map((c, index) => (
             <Filter
-              className={`${category === c.toLowerCase() ? 'active' : ''}`}
+              key={index}
+              className={`${category === c ? 'active' : ''}`}
               name="category"
               onClick={updateFilters}
             >
@@ -45,6 +42,10 @@ const Container = styled.div`
   border-radius: 15px;
   overflow: hidden;
   background: #ffffff;
+  @media (max-width: 915px) {
+    width: 100%;
+    height: 180px;
+  }
 `;
 
 const FilterLists = styled.div`
@@ -67,4 +68,7 @@ const Filter = styled.button`
   text-transform: capitalize;
   border: none;
   margin-bottom: 20px;
+  &:hover {
+    background: #cfd7ff;
+  }
 `;

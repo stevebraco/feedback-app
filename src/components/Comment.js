@@ -1,11 +1,30 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
+import { useParams } from 'react-router';
 import styled from 'styled-components';
+import { useDataContext } from '../context/data_context';
+import FromPost from './FromPost';
 import Reply from './Reply';
 
-const Comment = ({ id, content, user: { name, username }, replies }) => {
-  console.log(replies);
+// eslint-disable-next-line react/prop-types
+const Comment = (comment) => {
+  const { id: idComment } = useParams();
+
+  const {
+    id,
+    content,
+    user: { name, username },
+    replies,
+  } = comment;
+  const {
+    handleReply,
+    reply: { replyId, isReply },
+    addReply,
+    commentId,
+    repliesToReply,
+  } = useDataContext();
   return (
-    <>
+    <div>
       <Wrapper>
         <Avatar />
         <InfoContainer>
@@ -14,15 +33,29 @@ const Comment = ({ id, content, user: { name, username }, replies }) => {
               <Name>{name}</Name>
               <Username>@{username}</Username>
             </div>
-            <BtnReply>Reply</BtnReply>
+            <BtnReply onClick={handleReply(id)}>Reply</BtnReply>
           </Flex>
           <Content>{content}</Content>
         </InfoContainer>
       </Wrapper>
-
-      {replies > 0 &&
-        replies?.map((reply, index) => <Reply key={index} {...reply} />)}
-    </>
+      {isReply && replyId === id && (
+        <FromPost
+          handleSubmit={addReply(username, idComment)}
+          isPostReply={true}
+        />
+      )}
+      <div>
+        {replies?.map((reply, index) => (
+          <Reply key={index} reply={reply} id={id} index={index} />
+        ))}
+        {commentId === id && (
+          <form onSubmit={repliesToReply(idComment)}>
+            <input type="text" placeholder="REPLY" />
+            <button>post reply</button>
+          </form>
+        )}
+      </div>
+    </div>
   );
 };
 
@@ -72,6 +105,7 @@ const Username = styled.div`
   color: #647196;
 `;
 const BtnReply = styled.button`
+  cursor: pointer;
   display: inline-block;
   border: none;
   background: transparent;

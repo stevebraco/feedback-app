@@ -11,26 +11,25 @@ const FeedBackDetail = () => {
   const { productRequests } = useDataContext();
 
   const singleProduct = productRequests[id];
-  console.log(singleProduct?.comments);
-
+  let commentId = null;
   return (
     <Container>
       <Wrapper>
         <BtnContainer>
           <GoBack to="/">
-            {' '}
-            <img src="images/icon-arrow-left.svg" alt="Go back" /> Go back{' '}
+            <img src="images/icon-arrow-left.svg" alt="Go back" /> Go back
           </GoBack>
-          <EditFeedback to="/edit-feedback"> Edit Feedback </EditFeedback>
+          <EditFeedback to={`/editFeedback${id}`}> Edit Feedback </EditFeedback>
         </BtnContainer>
         <ProductRequest {...singleProduct} />
         <ContainerComments>
           {singleProduct?.comments && (
             <>
               <span>{singleProduct?.comments.length} comments</span>
-              {singleProduct?.comments.map((comment) => (
-                <Comment key={comment.id} {...comment} />
-              ))}
+              {singleProduct?.comments.map((comment) => {
+                commentId = comment.id;
+                return <Comment key={comment.id} {...comment} />;
+              })}
             </>
           )}
         </ContainerComments>
@@ -48,7 +47,7 @@ const Container = styled.div`
   z-index: 2;
   background: #f7f8fd;
   width: 100%;
-  padding-top: 80px;
+  padding: 80px 10px 10rem 10px;
   overflow: scroll;
 `;
 
