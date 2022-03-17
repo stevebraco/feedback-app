@@ -44,6 +44,9 @@ const Card = styled.div`
   border-radius: 10px;
   position: relative;
   overflow: hidden;
+  @media (max-width: 915px) {
+    padding: 17px 18px;
+  }
 `;
 
 const Border = styled.div`
@@ -89,6 +92,10 @@ const Description = styled.p`
   line-height: 23px;
   color: #647196;
   margin-bottom: 16px;
+  @media (max-width: 915px) {
+    font-size: 13px;
+    line-height: initial;
+  }
 `;
 
 const Category = styled.button`

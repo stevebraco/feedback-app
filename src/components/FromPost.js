@@ -60,8 +60,7 @@ const Text = styled.textarea`
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  max-width: ${(prop) => prop.width && '120px'};
-
+  max-width: ${(prop) => prop.isSize && '120px'};
   /* align-items: center; */
   width: 100%;
 `;

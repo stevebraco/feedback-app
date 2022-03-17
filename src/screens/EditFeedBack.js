@@ -141,7 +141,7 @@ const EditFeedBack = () => {
               </ButtonDelete>
               <div>
                 <ButtonCancel type="reset">Cancel</ButtonCancel>
-                <Button type="submit">Add FeedBack</Button>
+                <Button type="submit">Save Changes</Button>
               </div>
             </BtnWrapper>
           </form>
