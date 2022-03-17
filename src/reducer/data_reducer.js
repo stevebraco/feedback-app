@@ -50,12 +50,27 @@ const data_reducer = (state, action) => {
       .map((t) => t.comments)[0];
 
     console.log(productRequests[currentId]);
+    if (productRequests[currentId].comments) {
+      productRequest.push({
+        id: new Date().valueOf(),
+        content: message,
+        user: currentUser,
+      });
+    } else {
+      console.log('no comments');
+      productRequests[currentId] = {
+        ...productRequests[currentId],
+        comments: [
+          {
+            id: new Date().valueOf(),
+            content: message,
+            user: currentUser,
+          },
+        ],
+      };
+    }
 
-    productRequest.push({
-      id: new Date().valueOf(),
-      content: message,
-      user: currentUser,
-    });
+    console.log(productRequests[currentId]);
 
     return { ...state, charactersLimit: 250 };
   }

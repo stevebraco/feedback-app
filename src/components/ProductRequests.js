@@ -6,12 +6,13 @@ import { useFilterContext } from '../context/filter_context';
 
 const ProductRequests = () => {
   const { filteredProducts } = useFilterContext();
+  let sortById = filteredProducts.sort((a, b) => a.id - b.id).slice(0, 6);
   const { productRequestsLoading, productRequestsError } = useDataContext();
   if (productRequestsLoading) <p>Loading...</p>;
   if (productRequestsError) <p>Error...</p>;
   return (
     <Container>
-      {filteredProducts?.map((productRequest) => (
+      {sortById?.map((productRequest) => (
         <ProductRequest key={productRequest.id} {...productRequest} />
       ))}
     </Container>
