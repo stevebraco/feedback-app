@@ -15,13 +15,13 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/roadmap" element={<RoadmapFeedBack />} />
-          <Route path="/editFeedback:id" element={<EditFeedBack />} />
+          <Route exact path="/editFeedback:id" element={<EditFeedBack />} />
           <Route
             exact
             path="/feedback-detail:id"
             element={<FeedBackDetail />}
           />
-          <Route path="/addFeedback" element={<AddFeedBack />} />
+          <Route exact path="/addFeedback" element={<AddFeedBack />} />
           <Route path="/" element={<HomeScreen />} />
         </Routes>
       </Layout>

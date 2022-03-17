@@ -41,8 +41,8 @@ const EditFeedBack = () => {
   const status = getUniqueValues(allProducts, 'status');
 
   useEffect(() => {
-    fetchCategory(singleProduct.category);
-    fetchStatus(singleProduct.status);
+    fetchCategory(singleProduct?.category);
+    fetchStatus(singleProduct?.status);
   }, []);
 
   return (
@@ -56,7 +56,7 @@ const EditFeedBack = () => {
         <ContainerForm>
           <IconPlus src="/images/icon-edit-feedback.svg" alt="icon" />
 
-          <BigTitle>Editing &apos;{singleProduct.title}&apos;</BigTitle>
+          <BigTitle>Editing &apos;{singleProduct?.title}&apos;</BigTitle>
           <form onSubmit={editFeedback(id, navigate)}>
             <FormData>
               <Title>FeedBack Title</Title>
@@ -64,7 +64,7 @@ const EditFeedBack = () => {
               <TextInput
                 type="text"
                 id="title"
-                defaultValue={singleProduct.title}
+                defaultValue={singleProduct?.title}
               />
             </FormData>
             <div>
@@ -130,7 +130,7 @@ const EditFeedBack = () => {
                 etc.
               </Label>
               <TextInputBig
-                defaultValue={singleProduct.description}
+                defaultValue={singleProduct?.description}
                 type="text"
                 id="description"
               />
