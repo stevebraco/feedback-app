@@ -11,7 +11,7 @@ const FeedBackDetail = () => {
   const { productRequests } = useDataContext();
 
   const singleProduct = productRequests[id];
-  let commentId = null;
+  let isComment = singleProduct?.comments;
   return (
     <Container>
       <Wrapper>
@@ -22,17 +22,18 @@ const FeedBackDetail = () => {
           <EditFeedback to={`/editFeedback${id}`}> Edit Feedback </EditFeedback>
         </BtnContainer>
         <ProductRequest {...singleProduct} />
-        <ContainerComments>
-          {singleProduct?.comments && (
-            <>
-              <span>{singleProduct?.comments.length} comments</span>
-              {singleProduct?.comments.map((comment) => {
-                commentId = comment.id;
-                return <Comment key={comment.id} {...comment} />;
-              })}
-            </>
-          )}
-        </ContainerComments>
+        {isComment && (
+          <ContainerComments>
+            {singleProduct?.comments && (
+              <>
+                <span>{singleProduct?.comments.length} comments</span>
+                {singleProduct?.comments.map((comment) => {
+                  return <Comment key={comment.id} {...comment} />;
+                })}
+              </>
+            )}
+          </ContainerComments>
+        )}
         <AddComments id={id} />
       </Wrapper>
     </Container>

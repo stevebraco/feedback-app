@@ -24,8 +24,17 @@ const Comment = (comment) => {
     repliesToReply,
   } = useDataContext();
   return (
-    <div>
+    <Container>
       <Wrapper>
+        {replies && (
+          <>
+            <LineH />
+            <LineV />
+          </>
+        )}
+        {/* <Line
+          style={{ borderLeft: replies && '1px solid rgb(239, 241, 244)' }}
+        ></Line> */}
         <Avatar src={image} />
         <InfoContainer>
           <Flex>
@@ -55,26 +64,48 @@ const Comment = (comment) => {
           />
         )}
       </div>
-    </div>
+    </Container>
   );
 };
 
 export default Comment;
+
+const Container = styled.div`
+  position: relative;
+  overflow: hidden;
+`;
 
 const Avatar = styled.img`
   max-width: 40px;
   width: 100%;
   height: 40px;
   border-radius: 50%;
-  /* background: black; */
-  /* display: block; */
 `;
 
 const Wrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   gap: 32px;
-  padding: 20px 0;
+  padding: 20px 0 32px;
+`;
+
+const LineH = styled.div`
+  position: absolute;
+  top: 110px;
+  left: 17px;
+  z-index: 5;
+  background: red;
+  height: 100%;
+  border-left: 1px solid rgb(239, 241, 244);
+`;
+const LineV = styled.div`
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 5;
+  background: red;
+  width: 100%;
+  border-top: 1px solid rgb(239, 241, 244);
 `;
 
 const InfoContainer = styled.div`

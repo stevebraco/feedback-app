@@ -48,7 +48,16 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 32px;
-  padding: 20px 26px;
+  padding: 20px 26px 20px 40px;
+  position: relative;
+  /* &::after {
+    content: '';
+    position: absolute;
+    border-left: 1px solid black;
+    height: 100%;
+    top: 0;
+    left: 0;
+  } */
 `;
 
 const InfoContainer = styled.div`

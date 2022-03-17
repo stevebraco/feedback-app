@@ -1,14 +1,21 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
+import { useDataContext } from '../context/data_context';
 
-const FromPost = ({ handleSubmit, isPostReply, charactersLimit }) => {
+const FromPost = ({
+  handleSubmit,
+  isPostReply,
+  charactersLimit,
+  handleChange,
+}) => {
   return (
     <form onSubmit={handleSubmit}>
       <Container padding={isPostReply} flexDirection={isPostReply}>
         <Text
           isSize={isPostReply}
           placeholder="Type your comment here"
+          onChange={handleChange}
           type="text"
         />
         <Wrapper isSize={isPostReply}>

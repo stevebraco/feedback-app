@@ -14,6 +14,7 @@ const AddComments = ({ id }) => {
         handleSubmit={AddComments(id)}
         isPostReply={false}
         charactersLimit={charactersLimit}
+        handleChange={changeComments}
       />
     </AddContainer>
   );
