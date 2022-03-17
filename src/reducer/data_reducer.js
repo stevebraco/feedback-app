@@ -49,8 +49,10 @@ const data_reducer = (state, action) => {
       .filter((temp) => temp.id === parseInt(currentId) + 1)
       .map((t) => t.comments)[0];
 
+    console.log(productRequests[currentId]);
+
     productRequest.push({
-      id: productRequest.length + 1,
+      id: new Date().valueOf(),
       content: message,
       user: currentUser,
     });
@@ -156,7 +158,6 @@ const data_reducer = (state, action) => {
       replyId: action.payload,
       isReply: true,
     };
-    console.log(replyCopy);
     return { ...state, reply: replyCopy };
   }
 

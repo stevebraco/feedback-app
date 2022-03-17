@@ -7,7 +7,7 @@ import { useDataContext } from '../context/data_context';
 const Reply = ({ reply, id, index }) => {
   const {
     content,
-    user: { name, username },
+    user: { name, username, image },
     replyingTo,
   } = reply;
 
@@ -15,7 +15,7 @@ const Reply = ({ reply, id, index }) => {
   return (
     <div>
       <Wrapper>
-        <Avatar />
+        <Avatar src={image} />
         <InfoContainer>
           <Flex>
             <div>
@@ -36,12 +36,11 @@ const Reply = ({ reply, id, index }) => {
 
 export default Reply;
 
-const Avatar = styled.div`
+const Avatar = styled.img`
   max-width: 40px;
   width: 100%;
   height: 40px;
   border-radius: 50%;
-  background: black;
   display: block;
 `;
 

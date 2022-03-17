@@ -13,7 +13,7 @@ const Comment = (comment) => {
   const {
     id,
     content,
-    user: { name, username },
+    user: { name, username, image },
     replies,
   } = comment;
   const {
@@ -26,7 +26,7 @@ const Comment = (comment) => {
   return (
     <div>
       <Wrapper>
-        <Avatar />
+        <Avatar src={image} />
         <InfoContainer>
           <Flex>
             <div>
@@ -49,10 +49,10 @@ const Comment = (comment) => {
           <Reply key={index} reply={reply} id={id} index={index} />
         ))}
         {commentId === id && (
-          <form onSubmit={repliesToReply(idComment)}>
-            <input type="text" placeholder="REPLY" />
-            <button>post reply</button>
-          </form>
+          <FromPost
+            handleSubmit={repliesToReply(idComment)}
+            isPostReply={true}
+          />
         )}
       </div>
     </div>
@@ -61,13 +61,13 @@ const Comment = (comment) => {
 
 export default Comment;
 
-const Avatar = styled.div`
+const Avatar = styled.img`
   max-width: 40px;
   width: 100%;
   height: 40px;
   border-radius: 50%;
-  background: black;
-  display: block;
+  /* background: black; */
+  /* display: block; */
 `;
 
 const Wrapper = styled.div`
