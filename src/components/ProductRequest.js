@@ -55,6 +55,7 @@ ProductRequest.propTypes = {
 };
 
 const Container = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   height: 151px;
@@ -63,41 +64,23 @@ const Container = styled.div`
   border-radius: 10px;
   padding: 28px 32px;
   margin-bottom: 32px;
+  @media (max-width: 500px) {
+    height: 200px;
+  }
 `;
 
 const Wrapper = styled.div`
   display: flex;
   gap: 40px;
   height: 151px;
+  padding-bottom: 24px;
   border-radius: 10px;
   margin-bottom: 25px;
   width: 100%;
-`;
-
-const BtnUpVotes = styled.button`
-  cursor: pointer;
-  border: none;
-  background: #f2f4fe;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 40px;
-  width: 100%;
-  height: 53px;
-  border-radius: 10px;
-  gap: 8px;
-  transition: 0.5s;
-
-  span {
-    color: #3a4374;
-    font-weight: 700;
-    font-size: 13px;
-    padding: 0 9px;
-  }
-
-  &:hover {
-    background: #cfd7ff;
+  @media (max-width: 500px) {
+    flex-direction: column-reverse;
+    gap: 0;
+    justify-content: flex-end;
   }
 `;
 
@@ -105,6 +88,10 @@ const WrapperContent = styled.div`
   transition: 0.5s;
   &:hover h3 {
     color: #4661e6;
+  }
+
+  @media (max-width: 500px) {
+    padding-bottom: 15px;
   }
 `;
 
@@ -114,12 +101,18 @@ const Title = styled.h3`
   color: #3a4374;
   padding-bottom: 10px;
   cursor: pointer;
+  @media (max-width: 500px) {
+    font-size: 13px;
+  }
 `;
 const Description = styled.p`
   font-size: 16px;
   color: #647196;
   padding-bottom: 12px;
   font-weight: 300;
+  @media (max-width: 500px) {
+    font-size: 13px;
+  }
 `;
 const Category = styled.div`
   background: #f2f4ff;
@@ -142,5 +135,11 @@ const CommentsNumber = styled.div`
     font-size: 16px;
     font-weight: 700;
     padding-left: 10px;
+  }
+
+  @media (max-width: 500px) {
+    position: absolute;
+    right: 25px;
+    bottom: 50px;
   }
 `;

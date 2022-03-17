@@ -12,6 +12,7 @@ const FeedBackDetail = () => {
 
   const singleProduct = productRequests[id];
   let isComment = singleProduct?.comments;
+  console.log(singleProduct?.comments);
   return (
     <Container>
       <Wrapper>
@@ -24,7 +25,7 @@ const FeedBackDetail = () => {
         <ProductRequest {...singleProduct} />
         {isComment && (
           <ContainerComments>
-            {singleProduct?.comments && (
+            {singleProduct?.comments !== undefined && (
               <>
                 <span>{singleProduct?.comments.length} comments</span>
                 {singleProduct?.comments.map((comment) => {

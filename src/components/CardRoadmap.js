@@ -7,7 +7,7 @@ import UpVotes from './UpVotes';
 
 const CardRoadmap = ({ item, title, color }) => {
   const commentsNumber = item.comments ? item.comments.length : 0;
-  const { handleUpVotes, isLikedUpVotes } = useDataContext();
+  const { handleUpVotes } = useDataContext();
   return (
     <Card>
       <Border style={{ background: `${color}` }} />

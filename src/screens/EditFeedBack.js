@@ -318,11 +318,18 @@ const BtnWrapper = styled.div`
     display: flex;
     gap: 16px;
   }
+
+  @media (max-width: 500px) {
+    flex-direction: column-reverse;
+    div {
+      flex-direction: column-reverse;
+      margin-bottom: 16px;
+    }
+  }
 `;
 
 const Button = styled.button`
   width: 142px;
-  /* width: 100%; */
   height: 44px;
   display: inline-block;
   border-radius: 10px;
@@ -332,6 +339,9 @@ const Button = styled.button`
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 const ButtonCancel = styled.button`
@@ -344,6 +354,9 @@ const ButtonCancel = styled.button`
   background: #656ea3;
   font-weight: 700;
   cursor: pointer;
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 const ButtonDelete = styled.button`
@@ -356,6 +369,9 @@ const ButtonDelete = styled.button`
   background: #d73737;
   font-weight: 700;
   cursor: pointer;
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 const ICONDOWN = styled.img`

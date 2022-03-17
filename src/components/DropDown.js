@@ -32,6 +32,10 @@ const BtnSort = styled.button`
   &:hover {
     color: #ad1fea;
   }
+
+  @media (max-width: 500px) {
+    padding: 20px 24px;
+  }
 `;
 
 const IconCheck = styled.img`

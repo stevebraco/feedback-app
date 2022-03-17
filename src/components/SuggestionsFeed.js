@@ -23,10 +23,10 @@ const SuggestionsFeed = () => {
     <>
       <Container>
         <Wrapper>
-          <div>
+          <InfoSuggestion>
             <Icon src="/images/icon-suggestions.svg" alt="suggestions" />
             <span> {filteredProducts.length} Suggestions </span>
-          </div>
+          </InfoSuggestion>
           <WrapperSort onClick={openContainerSort}>
             <TextSort>Sort by :</TextSort>
             <ValueSort> {sort} </ValueSort>
@@ -64,6 +64,9 @@ const Container = styled.div`
   justify-content: space-between;
   padding: 0 16px 0 24px;
   margin-bottom: 30px;
+  @media (max-width: 500px) {
+    border-radius: 0;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -71,6 +74,12 @@ const Wrapper = styled.div`
   align-items: center;
   gap: 38px;
   color: #ffffff;
+`;
+
+const InfoSuggestion = styled.div`
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 const Icon = styled.img`
@@ -111,33 +120,13 @@ const ButtonLink = styled(Link)`
     padding: 12.5px 24px;
   }
 `;
-const BtnSort = styled.button`
-  position: relative;
-  color: #647196;
-  border: none;
-  background: transparent;
-  padding: 12px 24px;
-  cursor: pointer;
-  border-bottom: 2px solid rgba(151, 151, 151, 0.15);
-  width: 100%;
-  text-align: left;
-  transition: 0.5s;
 
-  &:hover {
-    color: #ad1fea;
-  }
-`;
-
-const IconCheck = styled.img`
-  position: absolute;
-  right: 24px;
-`;
 const ContainerSort = styled.div`
   position: absolute;
   top: 5rem;
   left: 11rem;
   width: 100%;
-  z-index: 99;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -145,4 +134,10 @@ const ContainerSort = styled.div`
   border-radius: 10px;
   max-width: 255px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  @media (max-width: 500px) {
+    top: 5rem;
+    left: 0;
+    max-width: 100%;
+    border-radius: 0;
+  }
 `;

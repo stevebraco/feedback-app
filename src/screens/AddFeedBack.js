@@ -252,6 +252,9 @@ const BtnWrapper = styled.div`
   display: flex;
   justify-content: right;
   gap: 16px;
+  @media (max-width: 500px) {
+    flex-direction: column-reverse;
+  }
 `;
 
 const Button = styled.button`
@@ -265,6 +268,9 @@ const Button = styled.button`
   background: #ad1fea;
   font-weight: 700;
   cursor: pointer;
+  @media (max-width: 500px) {
+    max-width: 100%;
+  }
 `;
 
 const ButtonCancel = styled.button`
@@ -278,4 +284,7 @@ const ButtonCancel = styled.button`
   background: #656ea3;
   font-weight: 700;
   cursor: pointer;
+  @media (max-width: 500px) {
+    max-width: 100%;
+  }
 `;

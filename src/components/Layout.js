@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
       </Aside>
       <Main>
         <SuggestionsFeed />
-        <Main>{children}</Main>
+        <Body>{children}</Body>
       </Main>
     </Container>
   );
@@ -32,6 +32,10 @@ const Container = styled.div`
   padding-top: 35px;
   @media (max-width: 915px) {
     flex-direction: column;
+  }
+  @media (max-width: 500px) {
+    padding: 0;
+    gap: 0;
   }
 `;
 const Aside = styled.div`
@@ -50,4 +54,10 @@ const Main = styled.div`
   flex-direction: column;
   width: 100%;
   max-width: 825px;
+`;
+
+const Body = styled.div`
+  @media (max-width: 500px) {
+    padding: 0 24px;
+  }
 `;

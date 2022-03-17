@@ -44,4 +44,15 @@ const BtnUpVotes = styled.button`
   &:hover {
     background: #cfd7ff;
   }
+
+  @media (max-width: 500px) {
+    flex-direction: row;
+    gap: 3px;
+    max-width: 60px;
+    min-height: 30px;
+
+    span {
+      padding: 0;
+    }
+  }
 `;

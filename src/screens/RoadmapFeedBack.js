@@ -165,6 +165,10 @@ const ContainerStatus = styled.div`
   @media (max-width: 915px) {
     grid-gap: 15px;
   }
+
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Title = styled.h3`

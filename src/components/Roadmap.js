@@ -44,6 +44,9 @@ const Container = styled.div`
     width: 100%;
     height: 180px;
   }
+  @media (max-width: 500px) {
+    display: none;
+  }
 `;
 
 const WrapperInfo = styled.div`
