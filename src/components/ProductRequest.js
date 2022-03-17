@@ -118,12 +118,12 @@ const Category = styled.div`
   background: #f2f4ff;
   display: inline-block;
   border-radius: 10px;
+  padding: 5px 16px;
   span {
     font-weight: 600;
     font-size: 13px;
     font-weight: 600;
     color: #4661e6;
-    padding: 5px 16px;
     text-transform: capitalize;
   }
 `;
