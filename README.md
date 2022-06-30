@@ -7,6 +7,12 @@
 ![App Screenshot](https://res.cloudinary.com/dz209s6jk/image/upload/q_auto:good,w_900/Challenges/cznparjtrflllhixgw96.jpg)
 
 
+## Tech Stack
+
+**Client:** React, CreateContext with useReducer, Styled-Components
+
+
+
 ## Your users should be able to:
 
 
@@ -19,6 +25,13 @@
 - Add comments and replies to a product feedback request
 - Upvote product feedback requests
 -  Keep track of any changes, even after refreshing the browser (localStorage could be used for this if you're not building out a full-stack app)
+
+
+## Authors
+
+- [@SteveBraco](https://www.github.com/stevebraco)
+
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
